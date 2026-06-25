@@ -91,9 +91,9 @@ class Question(models.Model):
         return "Question: " + self.text
 
     def is_get_score(self, selected_ids):
-        all_answers = self.choice_set.filter(is_correct=True).count()
+        all_answers = self.choice_set.filter(is_true=True).count()
         selected_correct = self.choice_set.filter(
-            is_correct=True, id__in=selected_ids
+            is_true=True, id__in=selected_ids
         ).count()
         if all_answers == selected_correct:
             return True
